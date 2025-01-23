@@ -9,7 +9,7 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Nickdjm\\Oauth2\\": "src/"
+            "Nickdjm\\OAuth2\\Client\\": "src/"
         }
     },
     "authors": [
