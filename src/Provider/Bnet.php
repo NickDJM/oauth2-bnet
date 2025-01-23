@@ -30,6 +30,8 @@ class Bnet extends AbstractProvider {
   /**
    * The API domain.
    *
+   * @todo: This should be set based on the region.
+   *
    * @var string
    */
   public $apiDomain = 'https://us.api.blizzard.com';
