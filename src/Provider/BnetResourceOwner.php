@@ -46,26 +46,6 @@ class BnetResourceOwner implements ResourceOwnerInterface {
   }
 
   /**
-   * Get the resource owner email.
-   *
-   * @return string|null
-   *   The resource owner email.
-   */
-  public function getEmail() {
-    return $this->getValueByKey($this->response, 'email');
-  }
-
-  /**
-   * Get the resource owner name.
-   *
-   * @return string|null
-   *   The resource owner name.
-   */
-  public function getName() {
-    return $this->getValueByKey($this->response, 'name');
-  }
-
-  /**
    * Returns the raw resource owner response.
    *
    * @return array
