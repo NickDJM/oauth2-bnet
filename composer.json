@@ -1,0 +1,22 @@
+{
+    "name": "nickdjm/oauth2-bnet",
+    "description": "Battle.net OAuth 2.0 Client Provider for The PHP League OAuth2-Client.",
+    "require": {
+        "league/oauth2-client": "^2.0",
+        "php": "^8.0",
+        "ext-json": "*"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Nickdjm\\Oauth2\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Nick Milton",
+            "email": "nickdjm@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev"
+}
