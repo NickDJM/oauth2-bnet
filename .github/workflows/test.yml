@@ -30,6 +30,8 @@ jobs:
         php-version: '8.3'
     - name: Download artifact
       uses: actions/download-artifact@v4
+      with:
+        path: vendor
     - name: Lint
       run: composer run-script phpcs
   unit:
