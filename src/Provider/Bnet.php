@@ -96,11 +96,14 @@ class Bnet extends AbstractProvider {
    *
    * @return void
    */
-  protected function checkResponse(ResponseInterface $response, $data) {
-    if ($response->getStatusCode() >= 400) {
-      throw BnetIdentityProviderException::clientException($response, $data);
+    protected function checkResponse(ResponseInterface $response, $data)
+    {
+        if ($response->getStatusCode() >= 400) {
+            throw BnetIdentityProviderException::clientException($response, $data);
+        } elseif (isset($data['error'])) {
+            throw BnetIdentityProviderException::oauthException($response, $data);
+        }
     }
-  }
 
   /**
    * Generate a user object from a successful user details request.
