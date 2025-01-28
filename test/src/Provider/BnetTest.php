@@ -185,7 +185,7 @@ class BnetTest extends TestCase
                      ->andReturn($this->createStream(json_encode([
                          "error" => "bad_verification_code",
                          "error_description" => "The code passed is incorrect or expired.",
-                         "error_uri" => "https =>//oauth.battle.net#bad-verification-code"
+                         "error_uri" => "https =>//oauth.battle.net#bad-verification-code",
                      ])));
         $postResponse->shouldReceive('getHeader')->andReturn(['content-type' => 'json']);
         $postResponse->shouldReceive('getStatusCode')->andReturn($status);
