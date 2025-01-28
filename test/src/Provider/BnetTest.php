@@ -87,9 +87,9 @@ class BnetTest extends TestCase
                       '{"access_token":"mock_access_token", "scope":"openid", "token_type":"bearer"}'
                   ));
         $response->shouldReceive('getHeader')
-                 ->andReturn(['content-type' => 'json']);
+                ->andReturn(['content-type' => 'json']);
         $response->shouldReceive('getStatusCode')
-                 ->andReturn(200);
+                ->andReturn(200);
 
         $client = m::mock('GuzzleHttp\ClientInterface');
         $client->shouldReceive('send')->times(1)->andReturn($response);
@@ -111,27 +111,27 @@ class BnetTest extends TestCase
 
         $postResponse = m::mock('Psr\Http\Message\ResponseInterface');
         $postResponse->shouldReceive('getBody')
-                     ->andReturn($this->createStream(http_build_query([
-                         'access_token' => 'mock_access_token',
-                         'expires' => 3600,
-                         'refresh_token' => 'mock_refresh_token',
-                     ])));
+                    ->andReturn($this->createStream(http_build_query([
+                        'access_token' => 'mock_access_token',
+                        'expires' => 3600,
+                        'refresh_token' => 'mock_refresh_token',
+                    ])));
         $postResponse->shouldReceive('getHeader')
-                     ->andReturn(['content-type' => 'application/x-www-form-urlencoded']);
+                    ->andReturn(['content-type' => 'application/x-www-form-urlencoded']);
         $postResponse->shouldReceive('getStatusCode')
-                     ->andReturn(200);
+                    ->andReturn(200);
 
         $userResponse = m::mock('Psr\Http\Message\ResponseInterface');
         $userResponse->shouldReceive('getBody')
-                     ->andReturn($this->createStream(json_encode([
-                         "sub" => $subject,
-                         "id" => $userId,
-                         "battletag" => $battleTag,
-                     ])));
+                    ->andReturn($this->createStream(json_encode([
+                        "sub" => $subject,
+                        "id" => $userId,
+                        "battletag" => $battleTag,
+                    ])));
         $userResponse->shouldReceive('getHeader')
-                     ->andReturn(['content-type' => 'json']);
+                    ->andReturn(['content-type' => 'json']);
         $userResponse->shouldReceive('getStatusCode')
-                     ->andReturn(200);
+                    ->andReturn(200);
 
         $client = m::mock('GuzzleHttp\ClientInterface');
         $client->shouldReceive('send')
@@ -155,16 +155,16 @@ class BnetTest extends TestCase
         $status = rand(400, 600);
         $postResponse = m::mock('Psr\Http\Message\ResponseInterface');
         $postResponse->shouldReceive('getBody')
-                     ->andReturn($this->createStream(json_encode([
-                         'message' => 'Validation Failed',
-                         'errors' => [
-                             ['resource' => 'Issue', 'field' => 'title', 'code' => 'missing_field'],
-                         ],
-                     ])));
+                    ->andReturn($this->createStream(json_encode([
+                        'message' => 'Validation Failed',
+                        'errors' => [
+                            ['resource' => 'Issue', 'field' => 'title', 'code' => 'missing_field'],
+                        ],
+                    ])));
         $postResponse->shouldReceive('getHeader')
-                     ->andReturn(['content-type' => 'json']);
+                    ->andReturn(['content-type' => 'json']);
         $postResponse->shouldReceive('getStatusCode')
-                     ->andReturn($status);
+                    ->andReturn($status);
 
         $client = m::mock('GuzzleHttp\ClientInterface');
         $client->shouldReceive('send')
@@ -182,11 +182,11 @@ class BnetTest extends TestCase
         $status = 200;
         $postResponse = m::mock('Psr\Http\Message\ResponseInterface');
         $postResponse->shouldReceive('getBody')
-                     ->andReturn($this->createStream(json_encode([
-                         "error" => "bad_verification_code",
-                         "error_description" => "The code passed is incorrect or expired.",
-                         "error_uri" => "https =>//oauth.battle.net#bad-verification-code",
-                     ])));
+                    ->andReturn($this->createStream(json_encode([
+                        "error" => "bad_verification_code",
+                        "error_description" => "The code passed is incorrect or expired.",
+                        "error_uri" => "https =>//oauth.battle.net#bad-verification-code",
+                    ])));
         $postResponse->shouldReceive('getHeader')->andReturn(['content-type' => 'json']);
         $postResponse->shouldReceive('getStatusCode')->andReturn($status);
 
