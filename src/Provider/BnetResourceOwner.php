@@ -26,6 +26,17 @@ class BnetResourceOwner implements ResourceOwnerInterface {
   }
 
   /**
+   * Get the resource owner subject.
+   *
+   * @return string|null
+   *   The resource owner subject.
+   */
+  public function getSubject()
+  {
+      return $this->getValueByKey($this->response, 'sub');
+  }
+
+  /**
    * Get the resource owner ID.
    *
    * @return string|null
