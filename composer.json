@@ -32,6 +32,7 @@
     },
     "scripts": {
       "phpcs": "phpcs src test --standard=PSR2 -sp",
-      "phpcbf": "phpcbf src test --standard=PSR2 -sp"
+      "phpcbf": "phpcbf src test --standard=PSR2 -sp",
+      "phpunit": "phpunit test"
     }
 }
