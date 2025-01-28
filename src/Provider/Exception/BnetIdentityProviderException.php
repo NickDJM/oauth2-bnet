@@ -22,6 +22,25 @@ class BnetIdentityProviderException extends IdentityProviderException
         return static::fromResponse($response, $data['message'] ?? json_encode($data));
     }
 
+    /**
+     * Creates oauth exception from response.
+     *
+     * @param ResponseInterface $response
+     *   The response.
+     * @param array $data
+     *   The Parsed response data.
+     *
+     * @return IdentityProviderException
+     *   The identity provider exception.
+     */
+    public static function oauthException(ResponseInterface $response, array $data): IdentityProviderException
+    {
+        return static::fromResponse(
+            $response,
+            isset($data['error']) ? $data['error'] : $response->getReasonPhrase()
+        );
+    }
+
   /**
    * Creates an identity exception from the response.
    *

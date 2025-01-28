@@ -105,6 +105,8 @@ class Bnet extends AbstractProvider
     {
         if ($response->getStatusCode() >= 400) {
             throw BnetIdentityProviderException::clientException($response, $data);
+        } elseif (isset($data['error'])) {
+            throw BnetIdentityProviderException::oauthException($response, $data);
         }
     }
 
