@@ -33,10 +33,10 @@ class BnetResourceOwner implements ResourceOwnerInterface
    * @return string|null
    *   The resource owner subject.
    */
-  public function getSubject()
-  {
-      return $this->getValueByKey($this->response, 'sub');
-  }
+    public function getSubject(): string
+    {
+        return $this->getValueByKey($this->response, 'sub');
+    }
 
   /**
    * Get the resource owner ID.
@@ -44,7 +44,7 @@ class BnetResourceOwner implements ResourceOwnerInterface
    * @return string|null
    *   The resource owner ID.
    */
-    public function getId()
+    public function getId(): string
     {
         return $this->getValueByKey($this->response, 'id');
     }
@@ -55,7 +55,7 @@ class BnetResourceOwner implements ResourceOwnerInterface
    * @return string|null
    *   The resource owner battle tag.
    */
-    public function getBattleTag()
+    public function getBattleTag(): string
     {
         return $this->getValueByKey($this->response, 'battletag');
     }
@@ -65,7 +65,7 @@ class BnetResourceOwner implements ResourceOwnerInterface
    *
    * @return array
    */
-    public function toArray()
+    public function toArray(): array
     {
         return $this->response;
     }

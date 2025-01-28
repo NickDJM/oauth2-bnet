@@ -12,12 +12,13 @@ class BnetIdentityProviderException extends IdentityProviderException
    *
    * @param ResponseInterface $response
    *   The response.
-   * @param [type] $data
+   * @param array $data
    *   The parsed response data.
+   *
    * @return IdentityProviderException
    *   The identity provider exception.
    */
-    public static function clientException(ResponseInterface $response, $data)
+    public static function clientException(ResponseInterface $response, array $data): IdentityProviderException
     {
         return static::fromResponse($response, $data['message'] ?? json_encode($data));
     }
@@ -48,10 +49,11 @@ class BnetIdentityProviderException extends IdentityProviderException
    *   The response.
    * @param string $message
    *   The message.
+   *
    * @return IdentityProviderException
    *   The identity provider exception.
    */
-    protected static function fromResponse(ResponseInterface $response, $message = null)
+    protected static function fromResponse(ResponseInterface $response, $message = null): IdentityProviderException
     {
         return new static($message, $response->getStatusCode(), (string) $response->getBody());
     }

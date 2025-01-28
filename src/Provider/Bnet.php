@@ -43,7 +43,7 @@ class Bnet extends AbstractProvider
    * @return string
    *   The authorization URL.
    */
-    public function getBaseAuthorizationUrl()
+    public function getBaseAuthorizationUrl(): string
     {
         return $this->host . '/authorize';
     }
@@ -56,7 +56,7 @@ class Bnet extends AbstractProvider
    * @return string
    *   The access token URL.
    */
-    public function getBaseAccessTokenUrl(array $params)
+    public function getBaseAccessTokenUrl(array $params): string
     {
         return $this->host . '/token';
     }
@@ -69,7 +69,7 @@ class Bnet extends AbstractProvider
    * @return string
    *   The provider URL.
    */
-    public function getResourceOwnerDetailsUrl(AccessToken $token)
+    public function getResourceOwnerDetailsUrl(AccessToken $token): string
     {
         return $this->host . '/userinfo';
     }
@@ -84,7 +84,7 @@ class Bnet extends AbstractProvider
    * @return array
    *   The default scopes.
    */
-    protected function getDefaultScopes()
+    protected function getDefaultScopes(): array
     {
         return ['openid'];
     }
@@ -101,7 +101,7 @@ class Bnet extends AbstractProvider
    *
    * @return void
    */
-    protected function checkResponse(ResponseInterface $response, $data)
+    protected function checkResponse(ResponseInterface $response, $data): void
     {
         if ($response->getStatusCode() >= 400) {
             throw BnetIdentityProviderException::clientException($response, $data);
@@ -121,7 +121,7 @@ class Bnet extends AbstractProvider
    * @return ResourceOwnerInterface
    *   The resource owner.
    */
-    protected function createResourceOwner(array $response, AccessToken $token)
+    protected function createResourceOwner(array $response, AccessToken $token): BnetResourceOwner
     {
         return new BnetResourceOwner($response);
     }
